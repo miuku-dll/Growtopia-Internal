@@ -1,0 +1,78 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1101,5): warning MSB8027: Two or more files with the name of TextEditor.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Executor\TextEditor.cpp, TextEditor.cpp.
+  CoreBot.cpp
+  ENetClient2.cpp
+  bot.cpp
+  dllmain.cpp
+  globals.cpp
+  gt.cpp
+  sigs.cpp
+  utils.cpp
+  tab1.cpp
+  TextEditor.cpp
+  hooks.cpp
+  Requests.cpp
+  Xor.h
+  autofarm.cpp
+  cheats.cpp
+  etc_elements.cpp
+  imgui_demo.cpp
+  imgui_tables.cpp
+  Automation.cpp
+  imgui.cpp
+  imgui_draw.cpp
+  imgui_widgets.cpp
+  imgui_impl_dx9.cpp
+  imgui_impl_win32.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\filesystem(13): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+  imwrap.cpp
+  Misc.cpp
+  menu.cpp
+C:\Users\suteo\Music\internal - Copy\INZERNAL\bot\CoreBot.cpp(208,20): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Item Database.cpp
+  networking.cpp
+  players.cpp
+  realtime.cpp
+  visual.cpp
+  AStar.cpp
+  angle.cpp
+C:\Users\suteo\Music\internal - Copy\INZERNAL\core\gt.cpp(452): warning C4715: 'gt::GetNetIDByUID': not all control paths return a value
+C:\Users\suteo\Music\internal - Copy\INZERNAL\core\gt.cpp(442): warning C4715: 'gt::GetUIDByNetid': not all control paths return a value
+  line_segment.cpp
+  mat2.cpp
+  mat3.cpp
+  mat4.cpp
+  origin.cpp
+  rect.cpp
+  vec1.cpp
+  vec2.cpp
+  vec3.cpp
+  vec4.cpp
+  CRandom.cpp
+  MathUtils.cpp
+  rtRect.cpp
+  MiscUtils.cpp
+  PlatformPrecomp.cpp
+  Variant.cpp
+  VariantDB.cpp
+  Consts.cpp
+  sdk.cpp
+  TextEditor.cpp
+  buffer.c
+  hde32.c
+  hde64.c
+  hook.c
+  trampoline.c
+  miniz.c
+  callbacks.c
+  compress.c
+  host.c
+  list.c
+  packet.c
+  peer.c
+  protocol.c
+  unix.c
+  win32.c
+C:\Users\suteo\Music\internal - Copy\obj\INZERNALD\TextEditor.obj : warning LNK4042: object specified more than once; extras ignored
+     Creating library C:\Users\suteo\Music\internal - Copy\bin\~~~.lib and object C:\Users\suteo\Music\internal - Copy\bin\~~~.exp
+~~~.exp : warning LNK4070: /OUT:INZERNAL.dll directive in .EXP differs from output filename 'C:\Users\suteo\Music\internal - Copy\bin\~~~.dll'; ignoring directive
+  INZERNAL.vcxproj -> C:\Users\suteo\Music\internal - Copy\bin\~~~.dll
