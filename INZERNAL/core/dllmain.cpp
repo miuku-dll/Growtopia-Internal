@@ -31,7 +31,7 @@ void on_inject() {
     MH_Initialize();
     gt::itemdatas();
 
-    gt::ReadConfig("illumina.ini");
+    gt::ReadConfig("Astral.ini");
     if (!opt::visual::loadonstart)
     {
         opt::visual::clothes = false;

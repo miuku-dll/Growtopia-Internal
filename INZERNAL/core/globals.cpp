@@ -287,9 +287,9 @@ namespace opt {
 		char KeyauthPassword[20] = "";
 
 		bool fastsign = false;
-		char fastsigntxt[589274] = "`cGet Illumina";
+		char fastsigntxt[589274] = "`cGet Astral :3";
 		bool fastboard = false;
-		char fastboardtxt[589275] = "`cGet Illumina";
+		char fastboardtxt[589275] = "`cGet Astral :3";
 
 		bool autocarnival;
 		int carnivalgame = 0;

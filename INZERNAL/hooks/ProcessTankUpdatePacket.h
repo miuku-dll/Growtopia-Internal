@@ -346,7 +346,7 @@ public:
                                 A = { "146.31.197.146", "179.50.125.40", "76.77.73.105", "94.167.184.15", "8.243.148.232", "34.131.243.175", "38.178.37.198", "112.230.30.137", "208.70.175.15", "180.142.57.10" };
                                 variantlist_t varlst{ "OnAddNotification" };
                                 varlst[1] = "";
-                                varlst[2] = "`7" + A.at(utils::random(0, 9)) + "`4 Illumina On Top";
+                                varlst[2] = "`7" + A.at(utils::random(0, 9)) + "`r Astral On Top";
                                 varlst[3] = "";
                                 varlst[4] = 0;
                                 gt::send_varlist_self(varlst);

@@ -39,14 +39,14 @@ public:
                 var.set("hash", std::to_string(utils::random(INT_MIN, INT_MAX)));
                 var.set("hash2", std::to_string(hash2));
                 var.set("player_age", "20");
-                gt::sendlog("`7Spoofing Info");
+                gt::sendlog("`wSpoofing Info");
             }
             if (opt::spoof_name) {
                 var.set("requestedName", utils::rnd(10));
             }
             if (opt::verspoof) {
                 var.set("game_version", opt::gt_version);
-                gt::sendlog("Spoofing Game Version");
+                gt::sendlog("`bSpoofing Game Version");
             }
             if (opt::cheat::random_flag) {
                 var.set("country", gt::get_random_flag());

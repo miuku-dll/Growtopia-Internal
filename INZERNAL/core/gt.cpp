@@ -670,7 +670,7 @@ void gt::join_world(std::string worlddname) {
 
 void gt::sendlog(std::string text) {
     variantlist_t var{ "OnConsoleMessage" };
-    var[1] = "`a[`sI`7n`7t`7e`sr`an`sa`7l`s]`0 " + text;
+    var[1] = "`a[`rAstral`a] " + text;
     gt::send_varlist_self(var, -1, 0, true);
 }
 

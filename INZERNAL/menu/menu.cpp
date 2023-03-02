@@ -664,70 +664,70 @@ void doCustomblockESP() {
     auto w2s = logic->GetWorldRenderer()->camera;
     auto rend = sdk::GetGameLogic()->renderer;
 
-        auto draw = ImGui::GetBackgroundDrawList();
-        auto LOCALSCREEN = w2s.WorldToScreen(local->GetPos() + (local->GetSize() / 2.f));
-        auto tilepos = local->GetPos() / 32;
-        static int goalx = 32;
-        static int goaly = 37;
-        static types::time timerlol = std::chrono::system_clock::now();
-        for (auto& tile : tilemap->tiles) {
-            CL_Vec2f screenfirst;
-            CL_Vec2f screensecond;
-            screenfirst.x = tile.position_x * 32;
-            screenfirst.y = tile.position_y * 32;
-            screensecond.x = tile.position_x * 32;
-            screensecond.y = tile.position_y * 32;
-            auto screen = w2s.WorldToScreen(screenfirst);
-            auto screen2 = w2s.WorldToScreen(screensecond);
-            if (tile.foreground == opt::cheat::customblockespid or tile.background == opt::cheat::customblockespid)
-            {
-                CL_Vec2f LocalPlayer;
-                LocalPlayer.x = local->GetPos().x + 10;
-                LocalPlayer.y = local->GetPos().y - (local->GetSize().y / 2);
-                auto ScreenLocal = rend->GetCamera()->WorldToScreen(LocalPlayer);
-                draw->AddLine(ImVec2(ScreenLocal.x, ScreenLocal.y), ImVec2(screen2.x, screen2.y), ESPColor, 5);
-                draw->AddRect(ImVec2(screen.x, screen.y), ImVec2(screen2.x, screen2.y), ESPColor, 5);
-
-            }
-        }
-    
-}
-void doCustomitemESP() {
-    auto local = sdk::GetGameLogic()->GetLocalPlayer();
-
-        auto draw = ImGui::GetBackgroundDrawList();
-
-        auto locals = sdk::GetGameLogic()->GetNetObjMgr();
-        auto logic = sdk::GetGameLogic();
-        auto pos2f = local->GetPos();
-        auto objmap = logic->GetObjectMap();
-        auto tilemap = logic->GetTileMap();
-        auto rend = sdk::GetGameLogic()->renderer;
-
-        float tilex = pos2f.x / 32;
-        float tiley = pos2f.y / 32;
-        for (auto it = objmap->objects.begin(); it != objmap->objects.end(); ++it) {
-
-            CL_Vec2f item;
-            item.x = it->pos.x - 3;
-            item.y = it->pos.y - 3;
-            CL_Vec2f itemy;
-            itemy.x = it->pos.x + 19;
-            itemy.y = it->pos.y + 19;
-            auto ItemXYScreen = rend->GetCamera()->WorldToScreen(item);
-            auto ItemWHScreen = rend->GetCamera()->WorldToScreen(itemy);
+    auto draw = ImGui::GetBackgroundDrawList();
+    auto LOCALSCREEN = w2s.WorldToScreen(local->GetPos() + (local->GetSize() / 2.f));
+    auto tilepos = local->GetPos() / 32;
+    static int goalx = 32;
+    static int goaly = 37;
+    static types::time timerlol = std::chrono::system_clock::now();
+    for (auto& tile : tilemap->tiles) {
+        CL_Vec2f screenfirst;
+        CL_Vec2f screensecond;
+        screenfirst.x = tile.position_x * 32;
+        screenfirst.y = tile.position_y * 32;
+        screensecond.x = tile.position_x * 32;
+        screensecond.y = tile.position_y * 32;
+        auto screen = w2s.WorldToScreen(screenfirst);
+        auto screen2 = w2s.WorldToScreen(screensecond);
+        if (tile.foreground == opt::cheat::customblockespid or tile.background == opt::cheat::customblockespid)
+        {
             CL_Vec2f LocalPlayer;
             LocalPlayer.x = local->GetPos().x + 10;
             LocalPlayer.y = local->GetPos().y - (local->GetSize().y / 2);
             auto ScreenLocal = rend->GetCamera()->WorldToScreen(LocalPlayer);
-            if (it->item_id == opt::cheat::customitemespid) {
+            draw->AddLine(ImVec2(ScreenLocal.x, ScreenLocal.y), ImVec2(screen2.x, screen2.y), ESPColor, 5);
+            draw->AddRect(ImVec2(screen.x, screen.y), ImVec2(screen2.x, screen2.y), ESPColor, 5);
 
-                draw->AddLine(ImVec2(ScreenLocal.x, ScreenLocal.y), ImVec2(ItemXYScreen.x, ItemXYScreen.y), ESPColor, 5.0f);
-                draw->AddRect(ImVec2(ItemXYScreen.x, ItemXYScreen.y), ImVec2(ItemWHScreen.x, ItemWHScreen.y), ESPColor, 5.0f);
-
-            }
         }
-    
+    }
+
+}
+void doCustomitemESP() {
+    auto local = sdk::GetGameLogic()->GetLocalPlayer();
+
+    auto draw = ImGui::GetBackgroundDrawList();
+
+    auto locals = sdk::GetGameLogic()->GetNetObjMgr();
+    auto logic = sdk::GetGameLogic();
+    auto pos2f = local->GetPos();
+    auto objmap = logic->GetObjectMap();
+    auto tilemap = logic->GetTileMap();
+    auto rend = sdk::GetGameLogic()->renderer;
+
+    float tilex = pos2f.x / 32;
+    float tiley = pos2f.y / 32;
+    for (auto it = objmap->objects.begin(); it != objmap->objects.end(); ++it) {
+
+        CL_Vec2f item;
+        item.x = it->pos.x - 3;
+        item.y = it->pos.y - 3;
+        CL_Vec2f itemy;
+        itemy.x = it->pos.x + 19;
+        itemy.y = it->pos.y + 19;
+        auto ItemXYScreen = rend->GetCamera()->WorldToScreen(item);
+        auto ItemWHScreen = rend->GetCamera()->WorldToScreen(itemy);
+        CL_Vec2f LocalPlayer;
+        LocalPlayer.x = local->GetPos().x + 10;
+        LocalPlayer.y = local->GetPos().y - (local->GetSize().y / 2);
+        auto ScreenLocal = rend->GetCamera()->WorldToScreen(LocalPlayer);
+        if (it->item_id == opt::cheat::customitemespid) {
+
+            draw->AddLine(ImVec2(ScreenLocal.x, ScreenLocal.y), ImVec2(ItemXYScreen.x, ItemXYScreen.y), ESPColor, 5.0f);
+            draw->AddRect(ImVec2(ItemXYScreen.x, ItemXYScreen.y), ImVec2(ItemWHScreen.x, ItemWHScreen.y), ESPColor, 5.0f);
+
+        }
+    }
+
 }
 
 void doNazi() {
@@ -829,67 +829,86 @@ void doBlinkcolor() {
         }
     }
 }
-
-void LoadTheme()
+void embraceTheDarkness()
 {
+    ImVec4* colors = ImGui::GetStyle().Colors;
+    colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
+    colors[ImGuiCol_TextDisabled] = ImVec4(0.50f, 0.50f, 0.50f, 1.00f);
+    colors[ImGuiCol_WindowBg] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);
+    colors[ImGuiCol_ChildBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+    colors[ImGuiCol_PopupBg] = ImVec4(0.19f, 0.19f, 0.19f, 0.92f);
+    colors[ImGuiCol_Border] = ImVec4(0.19f, 0.19f, 0.19f, 0.29f);
+    colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.24f);
+    colors[ImGuiCol_FrameBg] = ImVec4(0.05f, 0.05f, 0.05f, 0.54f);
+    colors[ImGuiCol_FrameBgHovered] = ImVec4(0.19f, 0.19f, 0.19f, 0.54f);
+    colors[ImGuiCol_FrameBgActive] = ImVec4(0.20f, 0.22f, 0.23f, 1.00f);
+    colors[ImGuiCol_TitleBg] = ImVec4(0.00f, 0.00f, 0.00f, 1.00f);
+    colors[ImGuiCol_TitleBgActive] = ImVec4(0.06f, 0.06f, 0.06f, 1.00f);
+    colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.00f, 0.00f, 0.00f, 1.00f);
+    colors[ImGuiCol_MenuBarBg] = ImVec4(0.14f, 0.14f, 0.14f, 1.00f);
+    colors[ImGuiCol_ScrollbarBg] = ImVec4(0.05f, 0.05f, 0.05f, 0.54f);
+    colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.34f, 0.34f, 0.34f, 0.54f);
+    colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.40f, 0.40f, 0.40f, 0.54f);
+    colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.56f, 0.56f, 0.56f, 0.54f);
+    colors[ImGuiCol_CheckMark] = ImVec4(0.33f, 0.67f, 0.86f, 1.00f);
+    colors[ImGuiCol_SliderGrab] = ImVec4(0.34f, 0.34f, 0.34f, 0.54f);
+    colors[ImGuiCol_SliderGrabActive] = ImVec4(0.56f, 0.56f, 0.56f, 0.54f);
+    colors[ImGuiCol_Button] = ImVec4(0.05f, 0.05f, 0.05f, 0.54f);
+    colors[ImGuiCol_ButtonHovered] = ImVec4(0.19f, 0.19f, 0.19f, 0.54f);
+    colors[ImGuiCol_ButtonActive] = ImVec4(0.20f, 0.22f, 0.23f, 1.00f);
+    colors[ImGuiCol_Header] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
+    colors[ImGuiCol_HeaderHovered] = ImVec4(0.00f, 0.00f, 0.00f, 0.36f);
+    colors[ImGuiCol_HeaderActive] = ImVec4(0.20f, 0.22f, 0.23f, 0.33f);
+    colors[ImGuiCol_Separator] = ImVec4(0.28f, 0.28f, 0.28f, 0.29f);
+    colors[ImGuiCol_SeparatorHovered] = ImVec4(0.44f, 0.44f, 0.44f, 0.29f);
+    colors[ImGuiCol_SeparatorActive] = ImVec4(0.40f, 0.44f, 0.47f, 1.00f);
+    colors[ImGuiCol_ResizeGrip] = ImVec4(0.28f, 0.28f, 0.28f, 0.29f);
+    colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.44f, 0.44f, 0.44f, 0.29f);
+    colors[ImGuiCol_ResizeGripActive] = ImVec4(0.40f, 0.44f, 0.47f, 1.00f);
+    colors[ImGuiCol_Tab] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
+    colors[ImGuiCol_TabHovered] = ImVec4(0.14f, 0.14f, 0.14f, 1.00f);
+    colors[ImGuiCol_TabActive] = ImVec4(0.20f, 0.20f, 0.20f, 0.36f);
+    colors[ImGuiCol_TabUnfocused] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
+    colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.14f, 0.14f, 0.14f, 1.00f);
+    colors[ImGuiCol_PlotLines] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+    colors[ImGuiCol_PlotLinesHovered] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+    colors[ImGuiCol_PlotHistogram] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+    colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+    colors[ImGuiCol_TableHeaderBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
+    colors[ImGuiCol_TableBorderStrong] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
+    colors[ImGuiCol_TableBorderLight] = ImVec4(0.28f, 0.28f, 0.28f, 0.29f);
+    colors[ImGuiCol_TableRowBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+    colors[ImGuiCol_TableRowBgAlt] = ImVec4(1.00f, 1.00f, 1.00f, 0.06f);
+    colors[ImGuiCol_TextSelectedBg] = ImVec4(0.20f, 0.22f, 0.23f, 1.00f);
+    colors[ImGuiCol_DragDropTarget] = ImVec4(0.33f, 0.67f, 0.86f, 1.00f);
+    colors[ImGuiCol_NavHighlight] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+    colors[ImGuiCol_NavWindowingHighlight] = ImVec4(1.00f, 0.00f, 0.00f, 0.70f);
+    colors[ImGuiCol_NavWindowingDimBg] = ImVec4(1.00f, 0.00f, 0.00f, 0.20f);
+    colors[ImGuiCol_ModalWindowDimBg] = ImVec4(1.00f, 0.00f, 0.00f, 0.35f);
+
     ImGuiStyle& style = ImGui::GetStyle();
-    style.Colors[ImGuiCol_Text] = ImColor(200,200,200, 255);
-    style.Colors[ImGuiCol_TextDisabled] = ImColor(120,120,120, 255);
-    style.Colors[ImGuiCol_WindowBg] = ImColor(20, 20, 20, 255);
-    style.Colors[ImGuiCol_ChildBg] = ImColor(13, 13, 13, 255);
-    style.Colors[ImGuiCol_PopupBg] = ImVec4(0.13f, 0.14f, 0.15f, 1.00f);
-    style.Colors[ImGuiCol_Border] = ImColor(10, 10,10, 255);
-    style.Colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
-    style.Colors[ImGuiCol_FrameBg] = ImColor(43, 44, 49, 255);
-    style.Colors[ImGuiCol_FrameBgHovered] = ImColor(43, 44, 49, 255);
-    style.Colors[ImGuiCol_FrameBgActive] = ImColor(43, 44, 49, 255);
-    style.Colors[ImGuiCol_TitleBg] = ImVec4(0.08f, 0.08f, 0.08f, 1.00f);
-    style.Colors[ImGuiCol_TitleBgActive] = ImVec4(0.08f, 0.08f, 0.08f, 1.00f);
-    style.Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.00f, 0.00f, 0.00f, 0.51f);
-    style.Colors[ImGuiCol_MenuBarBg] = ImColor(25, 25, 25, 255);
-    style.Colors[ImGuiCol_ScrollbarBg] = ImColor(13, 13, 13, 255);
-    style.Colors[ImGuiCol_ScrollbarGrab] = ImColor(214, 220, 226, 255);
-    
-    style.Colors[ImGuiCol_ScrollbarGrabHovered] = ImColor(249, 252, 255, 255);
-    style.Colors[ImGuiCol_ScrollbarGrabActive] = ImColor(249, 252, 255, 255);
-    style.Colors[ImGuiCol_CheckMark] = ImColor(0, 252, 156, 255);
-    style.Colors[ImGuiCol_SliderGrab] = ImColor(0, 252, 156, 255);
-    style.Colors[ImGuiCol_SliderGrabActive] = ImColor(0, 252, 156, 255);
-    style.Colors[ImGuiCol_Button] = ImVec4(0.23f, 0.23f, 0.24f, 1.00f);
-    style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.33f, 0.34f, 0.36f, 0.83f);
-    style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.23f, 0.23f, 0.24f, 1.00f);
-    style.Colors[ImGuiCol_Header] = ImVec4(0.22f, 0.22f, 0.22f, 1.00f);
-    style.Colors[ImGuiCol_HeaderHovered] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
-    style.Colors[ImGuiCol_HeaderActive] = ImVec4(0.67f, 0.67f, 0.67f, 0.39f);
-    style.Colors[ImGuiCol_Separator] = ImColor(64, 67, 71, 255);
-    style.Colors[ImGuiCol_SeparatorHovered] = ImColor(64, 67, 71, 255);
-    style.Colors[ImGuiCol_SeparatorActive] = ImColor(64, 67, 71, 255);
-    style.Colors[ImGuiCol_ResizeGrip] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
-    style.Colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.29f, 0.30f, 0.31f, 0.67f);
-    style.Colors[ImGuiCol_ResizeGripActive] = ImColor(0, 252, 156, 255);
-    style.Colors[ImGuiCol_Tab] = ImColor(43, 44, 49, 255);
-    style.Colors[ImGuiCol_TabHovered] = ImVec4(0.33f, 0.34f, 0.36f, 0.83f);
-    style.Colors[ImGuiCol_TabActive] = ImColor(25, 25, 27, 255);
-    style.Colors[ImGuiCol_TabUnfocused] = ImColor(43, 44, 49, 255);
-    style.Colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.13f, 0.14f, 0.15f, 1.00f);
-    style.Colors[ImGuiCol_PlotLines] = ImVec4(0.61f, 0.61f, 0.61f, 1.00f);
-    style.Colors[ImGuiCol_PlotLinesHovered] = ImVec4(1.00f, 0.43f, 0.35f, 1.00f);
-    style.Colors[ImGuiCol_PlotHistogram] = ImVec4(0.90f, 0.70f, 0.00f, 1.00f);
-    style.Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1.00f, 0.60f, 0.00f, 1.00f);
-    style.Colors[ImGuiCol_TextSelectedBg] = ImColor(147, 112, 213, 150);
-    style.Colors[ImGuiCol_DragDropTarget] = ImVec4(0.11f, 0.64f, 0.92f, 1.00f);
-    style.Colors[ImGuiCol_NavHighlight] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
-    style.Colors[ImGuiCol_NavWindowingHighlight] = ImVec4(1.00f, 1.00f, 1.00f, 0.70f);
-    style.Colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
-    style.Colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.35f);
-    style.GrabRounding = style.FrameRounding = 4.3f;
-    style.GrabRounding = style.WindowRounding = 4.3f;
-    style.GrabRounding = style.ScrollbarRounding = 4.3f;
-    style.GrabRounding = style.TabRounding = 4.3f;
-    style.GrabRounding = style.ChildRounding = 4.3f;
-    style.GrabRounding = style.PopupRounding = 4.3f;
-    style.GrabRounding = style.FrameRounding = 4.3f;
-    style.GrabRounding = style.GrabRounding = 4.3f;
+    style.WindowPadding = ImVec2(8.00f, 8.00f);
+    style.FramePadding = ImVec2(5.00f, 2.00f);
+    style.CellPadding = ImVec2(6.00f, 6.00f);
+    style.ItemSpacing = ImVec2(6.00f, 6.00f);
+    style.ItemInnerSpacing = ImVec2(6.00f, 6.00f);
+    style.TouchExtraPadding = ImVec2(0.00f, 0.00f);
+    style.IndentSpacing = 25;
+    style.ScrollbarSize = 15;
+    style.GrabMinSize = 10;
+    style.WindowBorderSize = 1;
+    style.ChildBorderSize = 1;
+    style.PopupBorderSize = 1;
+    style.FrameBorderSize = 1;
+    style.TabBorderSize = 1;
+    style.WindowRounding = 7;
+    style.ChildRounding = 4;
+    style.FrameRounding = 3;
+    style.PopupRounding = 4;
+    style.ScrollbarRounding = 9;
+    style.GrabRounding = 3;
+    style.LogSliderDeadzone = 4;
+    style.TabRounding = 4;
 }
 
 void LoadFont(ImGuiIO io) {
@@ -945,48 +964,48 @@ void spampunch() {
     auto local = sdk::GetGameLogic()->GetLocalPlayer();
     auto tilemap = sdk::GetGameLogic()->GetTileMap();
 
-        static types::time times = std::chrono::system_clock::now();
-        static types::time timer = std::chrono::system_clock::now();
-        auto locals = sdk::GetGameLogic()->GetNetObjMgr();
-        // for (auto it = objmap->objects.begin(); it != objmap->objects.end(); ++it);
-        auto it = sdk::GetGameLogic()->GetNetObjMgr()->players.begin();
-        std::advance(it, rand() % sdk::GetGameLogic()->GetNetObjMgr()->players.size());
+    static types::time times = std::chrono::system_clock::now();
+    static types::time timer = std::chrono::system_clock::now();
+    auto locals = sdk::GetGameLogic()->GetNetObjMgr();
+    // for (auto it = objmap->objects.begin(); it != objmap->objects.end(); ++it);
+    auto it = sdk::GetGameLogic()->GetNetObjMgr()->players.begin();
+    std::advance(it, rand() % sdk::GetGameLogic()->GetNetObjMgr()->players.size());
 
-        if (it->second != local && utils::isInside(it->second->pos.x, it->second->pos.y, 100 * 100, local->pos.x, local->pos.y)) {
-            Tile* tile = tilemap->GetTileSafe(it->second->pos / 32);
-            GameUpdatePacket packet{ 0 };
-            auto pos = local->GetPos();
-            int x = local->GetPos().x / 32;
-            int y = local->GetPos().y / 32;
-            packet.type = PACKET_STATE;
-            packet.int_data = 0;
-            auto  itposx = it->second->pos.x + 10;
-            auto  itposy = it->second->pos.y + 15;
-            packet.int_x = itposx / 32;
-            packet.int_y = itposy / 32;
-            static int poggers;
-            std::vector<int> flags;
-            flags = { 32, 48 };
-            if (utils::run_at_interval(timer, 0.5)) {
-                poggers = flags.at(rand() % 2);
-            }
-            packet.flags = poggers | 8390688 | (1 << 5) | (1 << 10) | (1 << 11); // 3104 fake place?
-            packet.pos_x = pos.x;
-            packet.pos_y = pos.y;
+    if (it->second != local && utils::isInside(it->second->pos.x, it->second->pos.y, 100 * 100, local->pos.x, local->pos.y)) {
+        Tile* tile = tilemap->GetTileSafe(it->second->pos / 32);
+        GameUpdatePacket packet{ 0 };
+        auto pos = local->GetPos();
+        int x = local->GetPos().x / 32;
+        int y = local->GetPos().y / 32;
+        packet.type = PACKET_STATE;
+        packet.int_data = 0;
+        auto  itposx = it->second->pos.x + 10;
+        auto  itposy = it->second->pos.y + 15;
+        packet.int_x = itposx / 32;
+        packet.int_y = itposy / 32;
+        static int poggers;
+        std::vector<int> flags;
+        flags = { 32, 48 };
+        if (utils::run_at_interval(timer, 0.5)) {
+            poggers = flags.at(rand() % 2);
+        }
+        packet.flags = poggers | 8390688 | (1 << 5) | (1 << 10) | (1 << 11); // 3104 fake place?
+        packet.pos_x = pos.x;
+        packet.pos_y = pos.y;
 
-            variantlist_t varlst{ "OnParticleEffect" };
-            varlst[1] = 88;
-            varlst[2] = vector2_t{ it->second->pos.x + 10, it->second->pos.y + 15 };
-            varlst[3] = 0;
-            varlst[4] = 0;
-            if (tile->foreground != 12 && tile->foreground != 6 && tile->foreground != 585 && tile->foreground != 5362 && it->first != 9999 && it->first != local->netid) {
-                if (utils::run_at_interval(times, 0.025)) {
-                    SendPacketRawHook::Execute(4, &packet, 56, NULL, sdk::GetPeer(), ENET_PACKET_FLAG_RELIABLE);
-                    gt::send_varlist_self(varlst);
-                }
+        variantlist_t varlst{ "OnParticleEffect" };
+        varlst[1] = 88;
+        varlst[2] = vector2_t{ it->second->pos.x + 10, it->second->pos.y + 15 };
+        varlst[3] = 0;
+        varlst[4] = 0;
+        if (tile->foreground != 12 && tile->foreground != 6 && tile->foreground != 585 && tile->foreground != 5362 && it->first != 9999 && it->first != local->netid) {
+            if (utils::run_at_interval(times, 0.025)) {
+                SendPacketRawHook::Execute(4, &packet, 56, NULL, sdk::GetPeer(), ENET_PACKET_FLAG_RELIABLE);
+                gt::send_varlist_self(varlst);
             }
         }
-    
+    }
+
 }
 void GetUid() {
     opt::cheat::GetNetids = gt::GetNetIDByUID(opt::cheat::GetUids);
@@ -1172,7 +1191,7 @@ void doNetidEsp() {
                 foot.x = netid.second->pos.x + netid.second->GetSize().x + 5;
                 foot.y = netid.second->pos.y + netid.second->GetSize().y + 5;
                 auto footcam = rend->GetCamera()->WorldToScreen(foot);
-                
+
                 draw->AddLine(ImVec2(ScreenLocal.x, ScreenLocal.y), ImVec2(ScreenPlayerLine.x, ScreenPlayerLine.y), ESPColor, 5);
                 draw->AddRect(ImVec2(ScreenPlayer.x, ScreenPlayer.y), ImVec2(footcam.x, footcam.y), ESPColor, 5.5f, 15, 5);
 
@@ -1887,7 +1906,7 @@ void menu::EndScene(IDirect3DDevice9* device, bool active) {
         ImGui::CreateContext();
         ImGuiIO& io = ImGui::GetIO();
         ImGui_ImplDX9_Init(device);
-        LoadTheme();
+        embraceTheDarkness();
         LoadFont(io);
         global::load = true;
     }
@@ -1895,7 +1914,7 @@ void menu::EndScene(IDirect3DDevice9* device, bool active) {
         ImGui_ImplDX9_NewFrame();
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
-        static bool showlogGUI = false;
+        static bool showlogGUI = true;
         static bool showgui = false;
         static bool showgui2 = false;
         if (GetAsyncKeyState(VK_F2) & 1) {
@@ -1936,7 +1955,7 @@ void menu::EndScene(IDirect3DDevice9* device, bool active) {
         }
         ImGui::End();
         ImGui::SetNextWindowSize({ 850, 730 });
-        if (showgui && ImGui::Begin("##menu", &showgui, ImGuiWindowFlags_NoDecoration)) {
+        if (showgui && ImGui::Begin("##window", &showgui, ImGuiWindowFlags_NoDecoration)) {
             animate();
             static heads tab{ rage };
             static sub_heads subtab{ networking };
@@ -1949,26 +1968,30 @@ void menu::EndScene(IDirect3DDevice9* device, bool active) {
             auto size = ImGui::GetWindowSize();
 
             ImGuiStyle style = ImGui::GetStyle();
-
-            draw->AddText(logo, 20.0f, ImVec2(pos.x + 14, pos.y + 12), ESPColor, "");
             
-            const char* tab_name = tab == rage ? +"" : 0;
-            draw->AddText(tab_title, 25.0f, ImVec2(pos.x + 50, pos.y + 15), ImColor(156, 166, 179, 255), tab_name);
+            // Menu
+          
+
+
+            const char* tab_name = tab == rage ? +"astralfarm" : 0;
+
+
+
+            draw->AddText(tab_title, 23.0f, ImVec2(pos.x + 20, pos.y + 15), ImColor(255,255,255, 255), tab_name);
 
             switch (tab) {
+
             case rage:
-                ImGui::SetCursorPos({ 10, 10 });
+                ImGui::SetCursorPos({ 10, 50 });
                 ImGui::BeginGroup(); {
-                        if (elements::subtab("Networking", subtab == networking)) { subtab = networking; }
-                        if (elements::subtab("Real Time", subtab == realtime)) { subtab = realtime; }
-                        if (elements::subtab("Players", subtab == player)) { subtab = player; }
-                        if (elements::subtab("Automation", subtab == players)) { subtab = players; }
-                        if (elements::subtab("Visual", subtab == visual)) { subtab = visual; }
-                        if (elements::subtab("Cheats", subtab == cheats)) { subtab = cheats; }
-                        if (elements::subtab("Item Database", subtab == world)) { subtab = world; }
-                    
-                     if (elements::subtab("Misc", subtab == Misc)) { subtab = Misc; }
-                  
+                    if (elements::subtab("Networking", subtab == networking)) { subtab = networking; }
+                    if (elements::subtab("Real Time", subtab == realtime)) { subtab = realtime; }
+                    if (elements::subtab("Players", subtab == player)) { subtab = player; }
+                    if (elements::subtab("Automation", subtab == players)) { subtab = players; }
+                    if (elements::subtab("Visual", subtab == visual)) { subtab = visual; }
+                    if (elements::subtab("Cheats", subtab == cheats)) { subtab = cheats; }
+                    if (elements::subtab("Item Database", subtab == world)) { subtab = world; }
+
 
                 } ImGui::EndGroup();
 
@@ -2038,6 +2061,7 @@ void menu::EndScene(IDirect3DDevice9* device, bool active) {
                 }
             }
             ImGui::End();
+        
         }
         auto local = sdk::GetGameLogic()->GetLocalPlayer();
         if (local) {
@@ -2045,7 +2069,7 @@ void menu::EndScene(IDirect3DDevice9* device, bool active) {
                 doModfly();
             if (opt::visual::spamparticle)
                 doSpamParticle();
-           
+
             if (opt::cheat::playeresp)
                 playeresp();
             if (opt::cheat::spamwater)
@@ -2118,7 +2142,7 @@ void menu::EndScene(IDirect3DDevice9* device, bool active) {
         }
         loopRainbow();
         auto draw = ImGui::GetBackgroundDrawList();
-        draw->AddText(NULL, 25.0f, ImVec2(10, 10), ESPColor, "illumina :3");
+        draw->AddText(NULL, 25.0f, ImVec2(10, 10), D3DCOLOR_XRGB(20,20,20), "astralfarm.xyz");
         ImGui::EndFrame();
         ImGui::Render();
         ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
