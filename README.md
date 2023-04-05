@@ -1,4 +1,4 @@
 # Growtopia-Internal
 Useless Internal Cheat With Shit Functions
 
-I hate c++ istg
+Not mine by any means, just "leaked"
