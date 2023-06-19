@@ -1,4 +1,4 @@
-# Growtopia-Internal
+## Growtopia-Internal
 Built around a old source of Inzernal
 
 ### Need help?
