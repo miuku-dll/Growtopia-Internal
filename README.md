@@ -1,5 +1,5 @@
 # Growtopia-Internal
-Useless Internal Cheat With Shit Functions
+Built around a old source of Inzernal
 
-# Support
+### Need help?
 I wont provide any support, nor help with compiling
