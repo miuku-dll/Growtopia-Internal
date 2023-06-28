@@ -2,4 +2,4 @@
 A simple 'trainer' type internal cheat built around a old source of Inzernal
 
 ### Need help?
-I wont provide any support, nor help with compiling
+I wont provide any support, nor help with updating it for the recent versions
