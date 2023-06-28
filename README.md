@@ -1,5 +1,6 @@
 ## Growtopia-Internal
 A simple 'trainer' type internal cheat built around a old source of Inzernal <br>
+So code is spaghetti and overall horrendous<br>
 
 ## Information
 
